@@ -1,11 +1,18 @@
-import React from "react";
-import logo from "./logo.svg";
+import React, { useState } from "react";
+import randomInteger from "./scripts/integer.tsx";
 import "./App.css";
 
 function App() {
-  return <div className="App">
-    
-  </div>;
+  const [integer, setInteger] = useState(null);
+  const handleIntegerChange = (e) => {
+    setInteger(e.target.value);
+  };
+  return (
+    <div className="App">
+      <input type="number" value={integer} onChange={handleIntegerChange} />
+      {integer ? randomInteger(integer) : ""}
+    </div>
+  );
 }
 
 export default App;
