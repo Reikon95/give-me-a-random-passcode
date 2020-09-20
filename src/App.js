@@ -9,6 +9,7 @@ function App() {
   };
   return (
     <div className="App">
+      I want... Numbers only!
       <input type="number" value={integer} onChange={handleIntegerChange} />
       {integer ? randomInteger(integer) : ""}
     </div>
