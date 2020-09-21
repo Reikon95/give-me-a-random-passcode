@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import randomInteger from "./scripts/integer.tsx";
+import randomInteger from "./scripts/integer.jsx";
 import "./App.css";
 
 function App() {
