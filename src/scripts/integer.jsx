@@ -1,12 +1,15 @@
 import React from "react";
 
-export default function randomInteger(length, numberOfWords, includeWords) {
+export default function randomInteger(length, numberOfWords, includeWords, includeAll) {
   const digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
   const lowercase = "abcdefghijklmnopqrstuvwxyz".split("");
   const uppercase = "abcdefghijklmnopqrstuvwxyz".toUpperCase().split("");
   const specials = "!@£$%^&*()+_{}".split("");
   const allChars = [digits, lowercase, uppercase, specials];
   let result = [];
+  if (includeAll) {
+    //select a random element from allChars, add a random element from within it
+  }
   if (includeWords) {
     let words = fetch(
       `https://random-word-api.herokuapp.com/word?number=${numberOfWords}`

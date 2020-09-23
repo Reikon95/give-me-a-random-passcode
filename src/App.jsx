@@ -3,9 +3,9 @@ import randomInteger from "./scripts/integer.jsx";
 import "./App.css";
 
 function App() {
-  const [integer, setInteger] = useState(null);
+  const [code, setCode] = useState(null);
   const handleIntegerChange = (e) => {
-    setInteger(e.target.value);
+    setCode(e.target.value);
   };
   return (
     <div className="App">
@@ -25,8 +25,8 @@ function App() {
         </li>
         <li>plus... how many words?</li>
       </ul>
-      <input type="number" value={integer} onChange={handleIntegerChange} />
-      {integer ? randomInteger(integer, 5) : ""}
+      <input type="number" value={code} onChange={handleIntegerChange} />
+      {code ? randomInteger(code, 5, true) : ""}
     </div>
   );
 }
