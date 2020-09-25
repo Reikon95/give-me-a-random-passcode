@@ -4,6 +4,13 @@ import "./App.css";
 
 function App() {
   const [code, setCode] = useState(null);
+  const [requirements, setRequirements] = useState({
+    numbers: false,
+    lowercase: false,
+    uppercase: false,
+    specials: false,
+    words: 0,
+  });
   const handleIntegerChange = (e) => {
     setCode(e.target.value);
   };
@@ -12,7 +19,16 @@ function App() {
       I want...
       <ul>
         <li>
-          Numbers <input type="checkbox" />
+          Numbers{" "}
+          <input
+            type="checkbox"
+            onChange={() =>
+              setRequirements(
+                ...requirements,
+                (requirements.numbers = !requirements.numbers)
+              )
+            }
+          />
         </li>
         <li>
           Lowercase <input type="checkbox" />

@@ -1,6 +1,12 @@
 import React from "react";
 
-export default function randomInteger(length, numberOfWords, includeWords, includeAll) {
+export default function randomInteger(
+  length,
+  numberOfWords,
+  includeNumbers,
+  includeWords,
+  includeAll
+) {
   const digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
   const lowercase = "abcdefghijklmnopqrstuvwxyz".split("");
   const uppercase = "abcdefghijklmnopqrstuvwxyz".toUpperCase().split("");
@@ -18,6 +24,7 @@ export default function randomInteger(length, numberOfWords, includeWords, inclu
       .then((result) => {
         console.log(result);
       });
+    result.push(words);
   }
   for (let i = 0; i < length; i++) {
     let randomElement = Math.floor(Math.floor(Math.random() * 10));
