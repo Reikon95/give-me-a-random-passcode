@@ -26,9 +26,11 @@ export default function randomInteger(
       });
     result.push(words);
   }
-  for (let i = 0; i < length; i++) {
-    let randomElement = Math.floor(Math.floor(Math.random() * 10));
-    result.push(digits[randomElement]);
+  if (includeNumbers) {
+    for (let i = 0; i < length; i++) {
+      let randomElement = Math.floor(Math.floor(Math.random() * 10));
+      result.push(digits[randomElement]);
+    }
   }
   for (let i = 0; i < length; i++) {
     let randomElement = Math.floor(Math.floor(Math.random() * 10));
