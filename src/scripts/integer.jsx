@@ -29,49 +29,28 @@ export default function randomInteger(
     collectFrom.push(specials);
   }
 
+  if (includeWords) {
+    fetch(`https://random-word-api.herokuapp.com/word?number=${numberOfWords}`)
+      .then((res) => res.json())
+      .then((res) => {
+        result.push(res.join("-"));
+        console.log(result);
+      });
+  }
+
   if (collectFrom.length > 0) {
     for (let i = 0; i < length; i++) {
       let randomElement = Math.floor(
         Math.floor(Math.random() * collectFrom.length)
       );
-
       let selectedArray = collectFrom[randomElement];
-
       result.push(
         selectedArray[Math.floor(Math.random() * selectedArray.length)]
       );
     }
   }
 
-  // if (includeWords) {
-  //   let words = fetch(
-  //     `https://random-word-api.herokuapp.com/word?number=${numberOfWords}`
-  //   )
-  //     .then((res) => res.json())
-  //     .then((result) => {
-  //       console.log(result);
-  //     });
-  //   result.push(words);
-  // }
-  // if (includeNumbers) {
-  //   for (let i = 0; i < length; i++) {
-  //     let randomElement = Math.floor(Math.floor(Math.random() * 10));
-  //     result.push(digits[randomElement]);
-  //   }
-  // }
-  // for (let i = 0; i < length; i++) {
-  //   let randomElement = Math.floor(Math.floor(Math.random() * 10));
-  //   result.push(lowercase[randomElement]);
-  // }
-  // for (let i = 0; i < length; i++) {
-  //   let randomElement = Math.floor(Math.floor(Math.random() * 10));
-  //   result.push(uppercase[randomElement]);
-  // }
-  // for (let i = 0; i < length; i++) {
-  //   let randomElement = Math.floor(Math.floor(Math.random() * 10));
-  //   result.push(specials[randomElement]);
-  // }
-  let code = result.join("");
-
-  return <>Your random a code is.... {code}</>;
+  // let code = result.join("");
+  console.log(result);
+  return <>Your random a code is.... {result.join("")}</>;
 }
