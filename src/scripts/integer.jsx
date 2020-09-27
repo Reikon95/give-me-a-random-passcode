@@ -51,3 +51,5 @@ export default function randomInteger(
   }
   return <>Your random a code is.... {result.join("")}</>;
 }
+
+//this should use api
