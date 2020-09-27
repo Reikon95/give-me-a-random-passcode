@@ -8,7 +8,7 @@ function App() {
   let [useLowercase, setUseLowerCase] = useState(false);
   let [useUpperCase, setUseUpperCase] = useState(false);
   let [useSpecials, setUseSpecials] = useState(false);
-  // let [numWords, setNumWords] = useState(0);
+  let [numWords, setNumWords] = useState(0);
   const handleIntegerChange = (e) => {
     setCode(e.target.value);
   };
@@ -38,6 +38,13 @@ function App() {
         type="checkbox"
         onChange={() => setUseSpecials((useSpecials = !useSpecials))}
       />
+      3 Random English Words
+      <input
+        type="checkbox"
+        onChange={() =>
+          setNumWords(numWords === 0 ? (numWords = 3) : (numWords = 0))
+        }
+      ></input>
       {/* plus... how many words?
       <input type="number" /> */}
       <input type="number" value={code} onChange={handleIntegerChange} />
@@ -45,7 +52,7 @@ function App() {
         {code
           ? randomInteger(
               code,
-              5,
+              numWords,
               useNumbers,
               true,
               useLowercase,
