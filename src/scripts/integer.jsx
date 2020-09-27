@@ -49,8 +49,5 @@ export default function randomInteger(
       );
     }
   }
-
-  // let code = result.join("");
-  console.log(result);
   return <>Your random a code is.... {result.join("")}</>;
 }

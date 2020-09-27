@@ -15,51 +15,53 @@ function App() {
 
   return (
     <div className="App">
-      I want...
-      <ul>
-        <li>
-          Numbers{" "}
-          <input
-            type="checkbox"
-            onChange={() => setUseNumbers((useNumbers = !useNumbers))}
-          />
-        </li>
-        <li>
-          Lowercase{" "}
-          <input
-            type="checkbox"
-            onChange={() => setUseLowerCase((useLowercase = !useLowercase))}
-          />
-        </li>
-        <li>
-          Uppercase{" "}
-          <input
-            type="checkbox"
-            onChange={() => setUseUpperCase((useUpperCase = !useUpperCase))}
-          />{" "}
-        </li>
-        <li>
-          Specials{" "}
-          <input
-            type="checkbox"
-            onChange={() => setUseSpecials((useSpecials = !useSpecials))}
-          />
-        </li>
-        <li>plus... how many words?</li>
-        <input type="number" />
-      </ul>
+      <div>
+        <h1>Generate a secure Passcode</h1>
+      </div>
+      I want... Numbers{" "}
+      <input
+        type="checkbox"
+        onChange={() => setUseNumbers((useNumbers = !useNumbers))}
+      />
+      Lowercase{" "}
+      <input
+        type="checkbox"
+        onChange={() => setUseLowerCase((useLowercase = !useLowercase))}
+      />
+      Uppercase{" "}
+      <input
+        type="checkbox"
+        onChange={() => setUseUpperCase((useUpperCase = !useUpperCase))}
+      />{" "}
+      Specials{" "}
+      <input
+        type="checkbox"
+        onChange={() => setUseSpecials((useSpecials = !useSpecials))}
+      />
+      {/* plus... how many words?
+      <input type="number" /> */}
       <input type="number" value={code} onChange={handleIntegerChange} />
-      {code
-        ? randomInteger(
-            code,
-            5,
-            useNumbers,
-            true,
-            useLowercase,
-            useUpperCase,
-            useSpecials
-          )
-        : ""}
+      <div className="result-wrapper">
+        {code
+          ? randomInteger(
+              code,
+              5,
+              useNumbers,
+              true,
+              useLowercase,
+              useUpperCase,
+              useSpecials
+            )
+          : ""}
+      </div>
+      <div>
+        <h2>Why should I care about this?</h2>
+        <p>
+          Simple passwords are a hacker's best friend - if they can guess it,
+          they can get it.
+        </p>
+        <h2>How long should my password be?</h2>
+      </div>
     </div>
   );
 }
