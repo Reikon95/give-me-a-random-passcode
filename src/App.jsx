@@ -1,3 +1,5 @@
+//change words to adj, then verb, then noun
+
 import React, { useState } from "react";
 import randomInteger from "./scripts/integer.jsx";
 import "./App.css";
