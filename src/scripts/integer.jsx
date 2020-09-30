@@ -2,7 +2,6 @@ import React from "react";
 import Words from "./words";
 export default function randomInteger(
   length,
-  numberOfWords,
   includeNumbers,
   includeWords,
   includeLower,
@@ -27,9 +26,6 @@ export default function randomInteger(
   }
   if (includeSpecial) {
     collectFrom.push(specials);
-  }
-
-  if (includeWords) {
   }
 
   if (collectFrom.length > 0) {

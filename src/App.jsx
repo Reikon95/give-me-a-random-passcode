@@ -1,5 +1,3 @@
-//change words to adj, then verb, then noun
-
 import React, { useState } from "react";
 import randomInteger from "./scripts/integer.jsx";
 import "./App.css";
@@ -10,17 +8,34 @@ function App() {
   let [useLowercase, setUseLowerCase] = useState(false);
   let [useUpperCase, setUseUpperCase] = useState(false);
   let [useSpecials, setUseSpecials] = useState(false);
-  let [numWords, setNumWords] = useState(0);
+  let [useWords, setUseWords] = useState(false);
+  let [displayCode, setDisplayCode] = useState(false);
   const handleIntegerChange = (e) => {
     setCode(e.target.value);
+  };
+
+  const generateCode = () => {
+    console.log("test");
+    setDisplayCode(true);
+    console.log("display ", displayCode);
   };
 
   return (
     <div className="App">
       <div>
-        <h1>Generate a secure Passcode</h1>
+        <h1>Generate a Secure Passcode</h1>
       </div>
-      I want... Numbers{" "}
+      <div class="decide-length-of-code">
+        I want it to be...{" "}
+        <input
+          type="number"
+          value={code}
+          onChange={handleIntegerChange}
+          className="code-length-input"
+        />{" "}
+        letters long.
+      </div>
+      I want to include... Numbers{" "}
       <input
         type="checkbox"
         onChange={() => setUseNumbers((useNumbers = !useNumbers))}
@@ -40,29 +55,24 @@ function App() {
         type="checkbox"
         onChange={() => setUseSpecials((useSpecials = !useSpecials))}
       />
-      3 Random English Words
+      Words
       <input
         type="checkbox"
-        onChange={() =>
-          setNumWords(numWords === 0 ? (numWords = 3) : (numWords = 0))
-        }
+        onChange={() => setUseWords((useWords = !useWords))}
       ></input>
-      {/* plus... how many words?
-      <input type="number" /> */}
-      <input type="number" value={code} onChange={handleIntegerChange} />
       <div className="result-wrapper">
-        {code
+        {displayCode
           ? randomInteger(
               code,
-              numWords,
               useNumbers,
-              true,
+              useWords,
               useLowercase,
               useUpperCase,
               useSpecials
             )
           : ""}
       </div>
+      <button onClick={() => generateCode()}>GENERATE</button>
       <div>
         <h2>Why should I care about this?</h2>
         <p>
