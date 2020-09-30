@@ -1,6 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
+
 .App {
   text-align: center;
   background-color: #e0d3de;
+  font-family: "Lora", serif;
 }
 ul {
   list-style-type: none;
@@ -9,10 +12,14 @@ ul {
 .decide-length-of-code {
   text-align: center;
 }
-
+.code-length-input {
+  width: 40px;
+}
 .app-button {
   margin: 0 5px;
   color: white;
+  height: 40px;
+  width: 10%;
 }
 
 .app-button-generate {
@@ -21,4 +28,8 @@ ul {
 
 .app-button-reset {
   background-color: #f44336;
+}
+
+.error-message {
+  color: red;
 }

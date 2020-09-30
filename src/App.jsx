@@ -44,6 +44,7 @@ function App() {
           value={code}
           onChange={handleIntegerChange}
           className="code-length-input"
+          min="0"
         />{" "}
         letters long.
       </div>
@@ -72,6 +73,16 @@ function App() {
         type="checkbox"
         onChange={() => setUseWords((useWords = !useWords))}
       ></input>
+      <div className="buttons-wrap">
+        <button className="app-button app-button-reset">RESET</button>
+        <button
+          onClick={() => generateCode()}
+          className="app-button app-button-generate"
+        >
+          GENERATE
+        </button>
+      </div>
+      <div className="error-message">{displayError}</div>
       <div className="result-wrapper">
         {displayCode
           ? randomInteger(
@@ -84,14 +95,6 @@ function App() {
             )
           : ""}
       </div>
-      <button className="app-button app-button-reset">RESET</button>
-      <button
-        onClick={() => generateCode()}
-        className="app-button app-button-generate"
-      >
-        GENERATE
-      </button>
-      <div className="error-message">{displayError}</div>
       {Content()}
     </div>
   );
