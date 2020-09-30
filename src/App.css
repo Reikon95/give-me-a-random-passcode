@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: #e0d3de;
 }
 ul {
   list-style-type: none;
@@ -7,4 +8,17 @@ ul {
 
 .decide-length-of-code {
   text-align: center;
+}
+
+.app-button {
+  margin: 0 5px;
+  color: white;
+}
+
+.app-button-generate {
+  background-color: #4caf50;
+}
+
+.app-button-reset {
+  background-color: #f44336;
 }

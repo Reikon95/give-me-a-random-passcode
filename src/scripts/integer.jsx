@@ -43,6 +43,9 @@ export default function randomInteger(
   if (includeWords) {
     result.push(Words());
   }
-  console.log("words, ", result.join(""));
-  return <>Your random a code is.... {result.join("")}</>;
+  return result.join("").length > 0 ? (
+    <>Your random code is.... {result.join("")}</>
+  ) : (
+    ""
+  );
 }

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import randomInteger from "./scripts/integer.jsx";
+import Content from "./assets/content/content";
 import "./App.css";
 
 function App() {
@@ -10,14 +11,25 @@ function App() {
   let [useSpecials, setUseSpecials] = useState(false);
   let [useWords, setUseWords] = useState(false);
   let [displayCode, setDisplayCode] = useState(false);
+  let [displayError, setDisplayError] = useState("");
+
   const handleIntegerChange = (e) => {
     setCode(e.target.value);
   };
 
   const generateCode = () => {
-    console.log("test");
-    setDisplayCode(true);
-    console.log("display ", displayCode);
+    if (
+      useNumbers ||
+      useLowercase ||
+      useUpperCase ||
+      useSpecials ||
+      useWords === true
+    ) {
+      setDisplayError(false);
+      setDisplayCode(true);
+    } else {
+      setDisplayError("ERROR - Please select from the above options");
+    }
   };
 
   return (
@@ -26,7 +38,7 @@ function App() {
         <h1>Generate a Secure Passcode</h1>
       </div>
       <div class="decide-length-of-code">
-        I want it to be...{" "}
+        I want my code to be...{" "}
         <input
           type="number"
           value={code}
@@ -72,15 +84,15 @@ function App() {
             )
           : ""}
       </div>
-      <button onClick={() => generateCode()}>GENERATE</button>
-      <div>
-        <h2>Why should I care about this?</h2>
-        <p>
-          Simple passwords are a hacker's best friend - if they can guess it,
-          they can get it.
-        </p>
-        <h2>How long should my password be?</h2>
-      </div>
+      <button className="app-button app-button-reset">RESET</button>
+      <button
+        onClick={() => generateCode()}
+        className="app-button app-button-generate"
+      >
+        GENERATE
+      </button>
+      <div className="error-message">{displayError}</div>
+      {Content()}
     </div>
   );
 }
