@@ -90,7 +90,7 @@ function App() {
         type="checkbox"
         onChange={() => setUseSpecials((useSpecials = !useSpecials))}
       />
-      Words
+      Add Some Words
       <input
         type="checkbox"
         onChange={() => setUseWords((useWords = !useWords))}

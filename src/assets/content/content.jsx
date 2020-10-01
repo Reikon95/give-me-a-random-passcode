@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./content.css";
 export default function Content() {
   return (
     <div className="content">
@@ -22,14 +22,14 @@ export default function Content() {
       </p>
       <h2>What should I do now? </h2>
       <p>Good question! Here's some general principles/tips to stick by:</p>
-      <ul>
-        <li>Avoid using the same password for multiple services!</li>
+      <ul className="content-list">
+        <li>- Avoid using the same password for multiple services!</li>
         <li>
-          If any dialog prompt asks for your password, take a minute to check
+          - If any dialog prompt asks for your password, take a minute to check
           the domain is legit, and ask yourself why they need it.
         </li>
         <li>
-          You can see if any website/service you have signed up for has been
+          - You can see if any website/service you have signed up for has been
           breached by entering your email at haveibeenpwned
         </li>
       </ul>
