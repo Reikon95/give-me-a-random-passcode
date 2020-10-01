@@ -30,12 +30,33 @@ export default function Content() {
         </li>
         <li>
           - You can see if any website/service you have signed up for has been
-          breached by entering your email at haveibeenpwned
+          breached by entering your email at{" "}
+          <a
+            href="https://haveibeenpwned.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            haveibeenpwned
+          </a>
         </li>
       </ul>
       <div>
         This is simply an advisory tool and we are not responsible for your
-        password useage. Programmed by Cameron Blackwood - get in touch here
+        password useage. Programmed by Cameron Blackwood -{" "}
+        <a
+          href="mailto:cameronjwblackwood@gmail.com"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          get in touch here.
+        </a>{" "}
+        <a
+          href="https://github.com/Reikon95/give-me-a-random"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Check out the code
+        </a>
       </div>
     </div>
   );
