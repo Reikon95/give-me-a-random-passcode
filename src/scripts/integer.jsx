@@ -46,7 +46,6 @@ export default function randomInteger(
   return result.join("").length > 0 ? (
     <>
       <div>Your random code is.... {result.join("")}</div>
-      <div>Hint - click to copy your code!</div>
     </>
   ) : (
     ""

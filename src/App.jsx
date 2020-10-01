@@ -21,9 +21,12 @@ function App() {
   };
 
   const handleCopy = (text) => {
-    let requiredString = text.props.children[1];
+    let requiredString = text.props.children.props.children[1];
     copy(requiredString.toString());
     setCopied(true);
+    setTimeout(() => {
+      setCopied(false);
+    }, 3000);
   };
 
   const generateCode = () => {
@@ -104,6 +107,11 @@ function App() {
       <div className="error-message">{displayError}</div>
       <div className="result-wrapper" onClick={() => handleCopy(code)}>
         {displayCode ? code : ""}
+      </div>
+      <div>
+        {copied
+          ? " 🙌 Copied to clipboard!  🙌"
+          : "Hint - click to copy to clipboard"}
       </div>
       {Content()}
     </div>
