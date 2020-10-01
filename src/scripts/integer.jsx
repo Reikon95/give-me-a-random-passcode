@@ -44,7 +44,10 @@ export default function randomInteger(
     result.push(Words());
   }
   return result.join("").length > 0 ? (
-    <>Your random code is.... {result.join("")}</>
+    <>
+      <div>Your random code is.... {result.join("")}</div>
+      <div>Hint - click to copy your code!</div>
+    </>
   ) : (
     ""
   );

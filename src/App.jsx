@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import randomInteger from "./scripts/integer.jsx";
 import Content from "./assets/content/content";
 import "./App.css";
+import * as copy from "copy-to-clipboard";
 
 function App() {
-  let [code, setCode] = useState(null);
+  let [code, setCode] = useState("");
+  let [copied, setCopied] = useState(false);
+  let [codeLength, setCodeLength] = useState(null);
   let [useNumbers, setUseNumbers] = useState(false);
   let [useLowercase, setUseLowerCase] = useState(false);
   let [useUpperCase, setUseUpperCase] = useState(false);
@@ -14,7 +17,13 @@ function App() {
   let [displayError, setDisplayError] = useState("");
 
   const handleIntegerChange = (e) => {
-    setCode(e.target.value);
+    setCodeLength(e.target.value);
+  };
+
+  const handleCopy = (text) => {
+    let requiredString = text.props.children[1];
+    copy(requiredString.toString());
+    setCopied(true);
   };
 
   const generateCode = () => {
@@ -25,6 +34,16 @@ function App() {
       useSpecials ||
       useWords === true
     ) {
+      setCode(
+        randomInteger(
+          codeLength,
+          useNumbers,
+          useWords,
+          useLowercase,
+          useUpperCase,
+          useSpecials
+        )
+      );
       setDisplayError(false);
       setDisplayCode(true);
     } else {
@@ -41,7 +60,7 @@ function App() {
         I want my code to be...{" "}
         <input
           type="number"
-          value={code}
+          value={codeLength}
           onChange={handleIntegerChange}
           className="code-length-input"
           min="0"
@@ -83,17 +102,8 @@ function App() {
         </button>
       </div>
       <div className="error-message">{displayError}</div>
-      <div className="result-wrapper">
-        {displayCode
-          ? randomInteger(
-              code,
-              useNumbers,
-              useWords,
-              useLowercase,
-              useUpperCase,
-              useSpecials
-            )
-          : ""}
+      <div className="result-wrapper" onClick={() => handleCopy(code)}>
+        {displayCode ? code : ""}
       </div>
       {Content()}
     </div>
