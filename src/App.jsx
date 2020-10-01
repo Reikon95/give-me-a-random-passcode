@@ -85,7 +85,7 @@ function App() {
           className="code-length-input"
           min="0"
         />{" "}
-        letters long.
+        characters long.
       </div>
       I want to include... Numbers{" "}
       <input

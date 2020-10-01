@@ -4,10 +4,22 @@ export default function Content() {
   return (
     <div className="content">
       <h2>Why should I care about this?</h2>
-      <p>
-        Simple passwords are a hacker's best friend - if they can guess it, they
-        can get it.
-      </p>
+      <ul>
+        <li>
+          {" "}
+          - Simple passwords are a hacker's best friend - if they can guess it,
+          they can get it.
+        </li>
+        <li>
+          - Hackers are most likely to target somebody who's password relates to
+          their interests - for example, I wouldn't make my passcode{" "}
+          <em>ArsenalFan123</em>.
+        </li>
+        <li>
+          - Because the codes generated here are random, it would be very
+          difficult to guess!
+        </li>
+      </ul>
       <h2>How long should my password be?</h2>
       <p>
         It's about striking a balance - the general principle is the longer your
@@ -41,6 +53,7 @@ export default function Content() {
         </li>
       </ul>
       <div>
+        <h2>Additional Info </h2>
         This is simply an advisory tool and we are not responsible for your
         password useage. Programmed by Cameron Blackwood -{" "}
         <a
