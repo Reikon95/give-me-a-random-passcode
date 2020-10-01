@@ -1,6 +1,6 @@
 import React from "react";
 import Words from "./words";
-export default function randomInteger(
+export default function codeGenerator(
   length,
   includeNumbers,
   includeWords,
