@@ -55,15 +55,14 @@ function App() {
       setDisplayCode(true);
     } else {
       setDisplayCode(false);
-      console.log("hits else ", displayCode);
+
       if (
-        useNumbers &&
-        useLowercase &&
-        useUpperCase &&
-        useSpecials &&
-        useWords === false
+        !useNumbers &&
+        !useLowercase &&
+        !useUpperCase &&
+        !useSpecials &&
+        !useWords
       ) {
-        console.log("b");
         setDisplayError("ERROR - Please select from the above options");
       } else if (codeLength > 256) {
         setDisplayCode(false);
