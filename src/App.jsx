@@ -31,11 +31,13 @@ function App() {
 
   const generateCode = () => {
     if (
-      useNumbers ||
-      useLowercase ||
-      useUpperCase ||
-      useSpecials ||
-      useWords === true
+      (useNumbers ||
+        useLowercase ||
+        useUpperCase ||
+        useSpecials ||
+        useWords === true) &&
+      codeLength > 0 &&
+      codeLength < 257
     ) {
       setCode(
         codeGenerator(
@@ -50,7 +52,22 @@ function App() {
       setDisplayError(false);
       setDisplayCode(true);
     } else {
-      setDisplayError("ERROR - Please select from the above options");
+      setDisplayCode(false);
+      if (
+        useNumbers &&
+        useLowercase &&
+        useUpperCase &&
+        useSpecials &&
+        useWords === false
+      ) {
+        setDisplayError("ERROR - Please select from the above options");
+      } else if (codeLength > 256) {
+        setDisplayError(
+          "Your passcode cannot include more than 256 characters, excluding the words (if added)"
+        );
+      } else {
+        setDisplayCode("Error - please report");
+      }
     }
   };
 
@@ -96,12 +113,12 @@ function App() {
         onChange={() => setUseWords((useWords = !useWords))}
       ></input>
       <div className="buttons-wrap">
-        <button className="app-button app-button-reset">RESET</button>
+        <button className="app-button app-button-reset">RESET YOUR CODE</button>
         <button
           onClick={() => generateCode()}
           className="app-button app-button-generate"
         >
-          GENERATE
+          GET NEW CODE
         </button>
       </div>
       <div className="error-message">{displayError}</div>

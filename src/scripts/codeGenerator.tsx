@@ -1,5 +1,6 @@
 import React from "react";
 import Words from "./words";
+import "./codeGenerator.css";
 export default function codeGenerator(
   length: number,
   includeNumbers: boolean,
@@ -45,7 +46,10 @@ export default function codeGenerator(
   }
   return result.join("").length > 0 ? (
     <>
-      <div>Your random code is.... {result.join("")}</div>
+      <div>
+        Your random code is....
+        <div className="result">{result.join("")}</div>
+      </div>
     </>
   ) : (
     ""
