@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import codeGenerator from "./scripts/codeGenerator.jsx";
-import Content from "./assets/content/content";
+import codeGenerator from "./scripts/codeGenerator.tsx";
+import Content from "./assets/content/content.tsx";
 import "./App.css";
 import * as copy from "copy-to-clipboard";
 
