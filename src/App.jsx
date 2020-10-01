@@ -128,7 +128,9 @@ function App() {
       <div>
         {copied
           ? " 🙌 Copied to clipboard!  🙌"
-          : "Hint - click to copy to clipboard"}
+          : displayCode
+          ? "Hint - click to copy to clipboard"
+          : ""}
       </div>
       {Content()}
     </div>
