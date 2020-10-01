@@ -10,8 +10,7 @@
     "react": "^16.13.1",
     "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3",
-    "typescript": "^4.0.3"
+    "react-scripts": "3.4.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -33,5 +32,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "typescript": "^4.0.3"
   }
 }

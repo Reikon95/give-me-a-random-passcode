@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import randomInteger from "./scripts/integer.jsx";
-import Content from "./assets/content/content";
+import codeGenerator from "./scripts/codeGenerator.tsx";
+import Content from "./assets/content/content.tsx";
 import "./App.css";
 import * as copy from "copy-to-clipboard";
 
@@ -38,7 +38,7 @@ function App() {
       useWords === true
     ) {
       setCode(
-        randomInteger(
+        codeGenerator(
           codeLength,
           useNumbers,
           useWords,

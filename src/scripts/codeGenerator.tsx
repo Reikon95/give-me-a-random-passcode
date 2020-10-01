@@ -1,12 +1,12 @@
 import React from "react";
 import Words from "./words";
-export default function randomInteger(
-  length,
-  includeNumbers,
-  includeWords,
-  includeLower,
-  includeUpper,
-  includeSpecial
+export default function codeGenerator(
+  length: number,
+  includeNumbers: boolean,
+  includeWords: boolean,
+  includeLower: boolean,
+  includeUpper: boolean,
+  includeSpecial: boolean
 ) {
   let collectFrom = [];
   const digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
