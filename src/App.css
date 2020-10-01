@@ -20,9 +20,9 @@ ul {
 .app-button {
   margin: 0 5px;
   color: white;
-  height: 40px;
-  width: 10%;
-}
+  min-height: 50px;
+  min-width: 40px;
+} 
 
 .app-button-generate {
   background-color: #4caf50;
