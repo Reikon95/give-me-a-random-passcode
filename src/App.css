@@ -1,8 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
 
+.title {
+  padding: 3vh 0vh;
+}
+
 .App {
   text-align: center;
-  background-color: #e0d3de;
+  background-color: rgb(247, 248, 252);
   font-family: "Lora", serif;
   width: 100vw;
   min-height: 100vh;
@@ -11,18 +15,33 @@ ul {
   list-style-type: none;
 }
 
+.decide-length-of-code,
+.options-wrapper,
+.app-button {
+  margin-bottom: 3vh;
+}
+
 .decide-length-of-code {
   text-align: center;
 }
 .code-length-input {
-  width: 40px;
+  width: 3vw;
+  margin: auto 1vw;
 }
+
+.error-message {
+  font-style: italic;
+}
+
 .app-button {
   margin: 0 5px;
   color: white;
   min-height: 50px;
   min-width: 40px;
-} 
+  border-radius: 8%;
+  box-shadow: 0;
+  border: none;
+}
 
 .app-button-generate {
   background-color: #4caf50;
@@ -34,4 +53,8 @@ ul {
 
 .error-message {
   color: red;
+}
+
+.result-wrapper {
+  margin-top: 3vh;
 }

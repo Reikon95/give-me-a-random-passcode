@@ -2,4 +2,8 @@
   text-align: center;
   margin: 10px 30px;
   word-wrap: break-word !important;
+  font-weight: 700;
+  font-size: 2em;
+  background-color: lightgray;
+  cursor: pointer;
 }

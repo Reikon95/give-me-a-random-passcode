@@ -84,8 +84,13 @@ function App() {
 
   return (
     <div className="App">
-      <div>
+      <div className="title">
         <h1>Generate a Secure Passcode</h1>
+        <em>
+          This is a personal project, <strong>NOT</strong> a high security
+          password generator. This is for demonstration purposes{" "}
+          <strong>only.</strong>
+        </em>
       </div>
       <div className="decide-length-of-code">
         I want my code to be...{" "}
@@ -98,13 +103,15 @@ function App() {
         />
         characters long.
       </div>
-      I want to include... Numbers
-      <input type="checkbox" onChange={() => setObj("nums")} />
-      Lowercase <input type="checkbox" onChange={() => setObj("lower")} />
-      Uppercase <input type="checkbox" onChange={() => setObj("upper")} />
-      Specials <input type="checkbox" onChange={() => setObj("special")} />
-      Add Some Words
-      <input type="checkbox" onChange={() => setObj("words")}></input>
+      <div className="options-wrapper">
+        I want to include... Numbers
+        <input type="checkbox" onChange={() => setObj("nums")} />
+        Lowercase <input type="checkbox" onChange={() => setObj("lower")} />
+        Uppercase <input type="checkbox" onChange={() => setObj("upper")} />
+        Specials <input type="checkbox" onChange={() => setObj("special")} />
+        Add Some Words
+        <input type="checkbox" onChange={() => setObj("words")}></input>
+      </div>
       <div className="buttons-wrap">
         <button
           className="app-button app-button-reset"
@@ -121,7 +128,7 @@ function App() {
       </div>
       <div className="error-message">{displayError}</div>
       <div className="result-wrapper" onClick={() => handleCopy(code)}>
-        {displayCode ? code : ""}
+        {displayCode ? <div className="code-object">{code}</div> : ""}
       </div>
       <div>
         {copied
