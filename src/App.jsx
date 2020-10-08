@@ -29,8 +29,12 @@ function App() {
     }, 3000);
   };
 
+  const resetCode = () => {
+    setCode("");
+    setDisplayCode(false);
+  };
+
   const generateCode = () => {
-    console.log("hit some");
     if (
       (useNumbers ||
         useLowercase ||
@@ -40,7 +44,6 @@ function App() {
       codeLength > 0 &&
       codeLength < 257
     ) {
-      console.log("a");
       setCode(
         codeGenerator(
           codeLength,
@@ -55,7 +58,6 @@ function App() {
       setDisplayCode(true);
     } else {
       setDisplayCode(false);
-
       if (
         !useNumbers &&
         !useLowercase &&
@@ -66,7 +68,6 @@ function App() {
         setDisplayError("ERROR - Please select from the above options");
       } else if (codeLength > 256) {
         setDisplayCode(false);
-
         setDisplayError(
           "Your passcode cannot include more than 256 characters, excluding the words (if added)"
         );
@@ -74,12 +75,6 @@ function App() {
         setDisplayError("Error - please report");
       }
     }
-  };
-
-  const resetCode = () => {
-    console.log("fires");
-    setDisplayCode(false);
-    setCode("");
   };
 
   return (
@@ -124,7 +119,12 @@ function App() {
         onChange={() => setUseWords((useWords = !useWords))}
       ></input>
       <div className="buttons-wrap">
-        <button className="app-button app-button-reset">RESET YOUR CODE</button>
+        <button
+          className="app-button app-button-reset"
+          onClick={() => resetCode()}
+        >
+          RESET YOUR CODE
+        </button>
         <button
           onClick={() => generateCode()}
           className="app-button app-button-generate"
@@ -132,9 +132,7 @@ function App() {
           GET NEW CODE
         </button>
       </div>
-      <div className="error-message" onClick={() => resetCode()}>
-        {displayError}
-      </div>
+      <div className="error-message">{displayError}</div>
       <div className="result-wrapper" onClick={() => handleCopy(code)}>
         {displayCode ? code : ""}
       </div>
