@@ -8,13 +8,15 @@ function App() {
   let [code, setCode] = useState("");
   let [copied, setCopied] = useState(false);
   let [codeLength, setCodeLength] = useState(null);
-  let [useNumbers, setUseNumbers] = useState(false);
-  let [useLowercase, setUseLowerCase] = useState(false);
-  let [useUpperCase, setUseUpperCase] = useState(false);
-  let [useSpecials, setUseSpecials] = useState(false);
-  let [useWords, setUseWords] = useState(false);
   let [displayCode, setDisplayCode] = useState(false);
   let [displayError, setDisplayError] = useState("");
+  let [codeObject, setCodeObject] = useState({
+    nums: false,
+    lower: false,
+    upper: false,
+    special: false,
+    words: false,
+  });
 
   const handleIntegerChange = (e) => {
     setCodeLength(e.target.value);
@@ -34,24 +36,27 @@ function App() {
     setDisplayCode(false);
   };
 
+  const setObj = (char) => {
+    setCodeObject({ ...codeObject, [char]: !codeObject[char] });
+  };
   const generateCode = () => {
     if (
-      (useNumbers ||
-        useLowercase ||
-        useUpperCase ||
-        useSpecials ||
-        useWords === true) &&
+      (codeObject.nums ||
+        codeObject.lower ||
+        codeObject.upper ||
+        codeObject.special ||
+        codeObject.words === true) &&
       codeLength > 0 &&
       codeLength < 257
     ) {
       setCode(
         codeGenerator(
           codeLength,
-          useNumbers,
-          useWords,
-          useLowercase,
-          useUpperCase,
-          useSpecials
+          codeObject.nums,
+          codeObject.words,
+          codeObject.lower,
+          codeObject.upper,
+          codeObject.special
         )
       );
       setDisplayError(false);
@@ -59,11 +64,11 @@ function App() {
     } else {
       setDisplayCode(false);
       if (
-        !useNumbers &&
-        !useLowercase &&
-        !useUpperCase &&
-        !useSpecials &&
-        !useWords
+        !codeObject.nums &&
+        !codeObject.lower &&
+        !codeObject.upper &&
+        !codeObject.special &&
+        !codeObject.words
       ) {
         setDisplayError("ERROR - Please select from the above options");
       } else if (codeLength > 256) {
@@ -90,34 +95,16 @@ function App() {
           onChange={handleIntegerChange}
           className="code-length-input"
           min="0"
-        />{" "}
+        />
         characters long.
       </div>
-      I want to include... Numbers{" "}
-      <input
-        type="checkbox"
-        onChange={() => setUseNumbers((useNumbers = !useNumbers))}
-      />
-      Lowercase{" "}
-      <input
-        type="checkbox"
-        onChange={() => setUseLowerCase((useLowercase = !useLowercase))}
-      />
-      Uppercase{" "}
-      <input
-        type="checkbox"
-        onChange={() => setUseUpperCase((useUpperCase = !useUpperCase))}
-      />{" "}
-      Specials{" "}
-      <input
-        type="checkbox"
-        onChange={() => setUseSpecials((useSpecials = !useSpecials))}
-      />
+      I want to include... Numbers
+      <input type="checkbox" onChange={() => setObj("nums")} />
+      Lowercase <input type="checkbox" onChange={() => setObj("lower")} />
+      Uppercase <input type="checkbox" onChange={() => setObj("upper")} />
+      Specials <input type="checkbox" onChange={() => setObj("special")} />
       Add Some Words
-      <input
-        type="checkbox"
-        onChange={() => setUseWords((useWords = !useWords))}
-      ></input>
+      <input type="checkbox" onChange={() => setObj("words")}></input>
       <div className="buttons-wrap">
         <button
           className="app-button app-button-reset"
