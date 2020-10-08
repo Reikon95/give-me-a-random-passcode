@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 import App from "./App";
 
 test("renders title", () => {
@@ -16,6 +16,16 @@ test("renders all checkboxes", () => {
 
 test("all checkboxes should be unchecked", () => {
   const { getAllByRole } = render(<App />);
-  const checkedCheckboxes = getAllByRole("checkbox", { checked: false });
-  expect(checkedCheckboxes).toHaveLength(5);
+  const unCheckedCheckboxes = getAllByRole("checkbox", { checked: false });
+  expect(unCheckedCheckboxes).toHaveLength(5);
 });
+
+test("checking checkboxes should check that individual box and not any others", () => {
+  const { getAllByRole } = render(<App />);
+  const checks = getAllByRole("checkbox");
+  fireEvent.click(checks[0]);
+  expect(checks[0].checked).toEqual(true);
+  expect(checks[1].checked).toEqual(false);
+});
+
+
