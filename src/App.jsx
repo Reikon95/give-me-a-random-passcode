@@ -41,11 +41,7 @@ function App() {
   };
   const generateCode = () => {
     if (
-      (codeObject.nums ||
-        codeObject.lower ||
-        codeObject.upper ||
-        codeObject.special ||
-        codeObject.words === true) &&
+      Object.values(codeObject).includes(true) &&
       codeLength > 0 &&
       codeLength < 257
     ) {
@@ -63,14 +59,8 @@ function App() {
       setDisplayCode(true);
     } else {
       setDisplayCode(false);
-      if (
-        !codeObject.nums &&
-        !codeObject.lower &&
-        !codeObject.upper &&
-        !codeObject.special &&
-        !codeObject.words
-      ) {
-        setDisplayError("ERROR - Please select from the above options");
+      if (!Object.values(codeObject).includes(true)) {
+        setDisplayError("ERROR - Please select one of the above options");
       } else if (codeLength > 256) {
         setDisplayCode(false);
         setDisplayError(
@@ -85,7 +75,7 @@ function App() {
   return (
     <div className="App">
       <div className="title">
-        <h1>Generate a Secure Passcode</h1>
+        <h1>Generate an Example Secure Passcode</h1>
         <em>
           This is a personal project, <strong>NOT</strong> a high security
           password generator. This is for demonstration purposes{" "}
