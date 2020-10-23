@@ -24,7 +24,6 @@ function App() {
 
   const handleCopy = (text) => {
     let requiredString = text.props.children.props.children[1];
-    console.log(requiredString.props.children);
     copy(requiredString.props.children.toString());
     setCopied(true);
     setTimeout(() => {
@@ -100,9 +99,10 @@ function App() {
         Lowercase <input type="checkbox" onChange={() => setObj("lower")} />
         Uppercase <input type="checkbox" onChange={() => setObj("upper")} />
         Specials <input type="checkbox" onChange={() => setObj("special")} />
-        Add Some Words
-        <input type="checkbox" onChange={() => setObj("words")}></input>
       </div>
+      Can't remember a random code? Tick to generate random words with special
+      characters instead
+      <input type="checkbox" onChange={() => setObj("words")}></input>
       <div className="buttons-wrap">
         <button
           className="app-button app-button-reset"

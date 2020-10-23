@@ -23,8 +23,10 @@ ul {
 
 .decide-length-of-code {
   text-align: center;
+  margin-top: 3vh;
 }
 .code-length-input {
+  min-width: 20px;
   width: 3vw;
   margin: auto 1vw;
 }
