@@ -3,7 +3,7 @@ import "./content.css";
 export default function Content() {
   return (
     <div className="content">
-      <h2>Why should I care about this?</h2>
+      {/* <h2>Why should I care about this?</h2>
       <ul>
         <li>
           {" "}
@@ -35,13 +35,13 @@ export default function Content() {
       <h2>What should I do now? </h2>
       <p>Good question! Here's some general principles/tips to stick by:</p>
       <ul className="content-list">
-        <li>- Avoid using the same password for multiple services!</li>
+        <li>Avoid using the same password for multiple services!</li>
         <li>
-          - If any dialog prompt asks for your password, take a minute to check
+          If any dialog prompt asks for your password, take a minute to check
           the domain is legit, and ask yourself why they need it.
         </li>
         <li>
-          - You can see if any website/service you have signed up for has been
+          You can see if any website/service you have signed up for has been
           breached by entering your email at{" "}
           <a
             href="https://haveibeenpwned.com/"
@@ -51,7 +51,7 @@ export default function Content() {
             haveibeenpwned
           </a>
         </li>
-      </ul>
+      </ul> */}
       <div>
         <h2>Additional Info </h2>
         This is simply an advisory tool and we are not responsible for your
