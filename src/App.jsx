@@ -24,7 +24,8 @@ function App() {
 
   const handleCopy = (text) => {
     let requiredString = text.props.children.props.children[1];
-    copy(requiredString.toString());
+    console.log(requiredString.props.children);
+    copy(requiredString.props.children.toString());
     setCopied(true);
     setTimeout(() => {
       setCopied(false);
