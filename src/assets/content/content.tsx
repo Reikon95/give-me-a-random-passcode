@@ -14,7 +14,7 @@ export default function Content() {
             rel="noopener noreferrer"
             target="_blank"
           >
-            Cameron Blackwood
+            Cameron Blackwood.
           </a>
         </div>
         <a
@@ -22,7 +22,7 @@ export default function Content() {
           rel="noopener noreferrer"
           target="_blank"
         >
-          Check out the code
+          Check out the code here!
         </a>
       </div>
     </div>
