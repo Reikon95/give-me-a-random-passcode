@@ -31,11 +31,6 @@ function App() {
     }, 3000);
   };
 
-  const resetCode = () => {
-    setCode("");
-    setDisplayCode(false);
-  };
-
   const setObj = (char) => {
     setCodeObject({ ...codeObject, [char]: !codeObject[char] });
   };
@@ -86,7 +81,7 @@ function App() {
         I want my code to be...{" "}
         <input
           type="number"
-          value={codeLength}
+          value={codeLength ? codeLength : ""}
           onChange={handleIntegerChange}
           className="code-length-input"
           min="0"
@@ -94,22 +89,16 @@ function App() {
         characters long.
       </div>
       <div className="options-wrapper">
-        I want to include... Numbers
-        <input type="checkbox" onChange={() => setObj("nums")} />
-        Lowercase <input type="checkbox" onChange={() => setObj("lower")} />
-        Uppercase <input type="checkbox" onChange={() => setObj("upper")} />
-        Specials <input type="checkbox" onChange={() => setObj("special")} />
+        I want to include...
+        <div>
+          Numbers
+          <input type="checkbox" onChange={() => setObj("nums")} />
+          Lowercase <input type="checkbox" onChange={() => setObj("lower")} />
+          Uppercase <input type="checkbox" onChange={() => setObj("upper")} />
+          Specials <input type="checkbox" onChange={() => setObj("special")} />
+        </div>
       </div>
-      Can't remember a random code? Tick to generate random words with special
-      characters instead
-      <input type="checkbox" onChange={() => setObj("words")}></input>
       <div className="buttons-wrap">
-        <button
-          className="app-button app-button-reset"
-          onClick={() => resetCode()}
-        >
-          RESET YOUR CODE
-        </button>
         <button
           onClick={() => generateCode()}
           className="app-button app-button-generate"
