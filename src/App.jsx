@@ -100,16 +100,7 @@ function App() {
         Uppercase <input type="checkbox" onChange={() => setObj("upper")} />
         Specials <input type="checkbox" onChange={() => setObj("special")} />
       </div>
-      Can't remember a random code? Tick to generate random words with special
-      characters instead
-      <input type="checkbox" onChange={() => setObj("words")}></input>
       <div className="buttons-wrap">
-        <button
-          className="app-button app-button-reset"
-          onClick={() => resetCode()}
-        >
-          RESET YOUR CODE
-        </button>
         <button
           onClick={() => generateCode()}
           className="app-button app-button-generate"
