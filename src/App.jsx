@@ -1,39 +1,39 @@
-import React, { useState } from "react";
-import codeGenerator from "./scripts/codeGenerator.tsx";
-import Content from "./assets/content/content.tsx";
-import "./App.css";
-import * as copy from "copy-to-clipboard";
+import React, { useState } from "react"
+import codeGenerator from "./scripts/codeGenerator.tsx"
+import Content from "./assets/content/content.tsx"
+import "./App.css"
+import * as copy from "copy-to-clipboard"
 
 function App() {
-  let [code, setCode] = useState("");
-  let [copied, setCopied] = useState(false);
-  let [codeLength, setCodeLength] = useState(null);
-  let [displayCode, setDisplayCode] = useState(false);
-  let [displayError, setDisplayError] = useState("");
+  let [code, setCode] = useState("")
+  let [copied, setCopied] = useState(false)
+  let [codeLength, setCodeLength] = useState(null)
+  let [displayCode, setDisplayCode] = useState(false)
+  let [displayError, setDisplayError] = useState("")
   let [codeObject, setCodeObject] = useState({
     nums: false,
     lower: false,
     upper: false,
     special: false,
     words: false,
-  });
+  })
 
   const handleIntegerChange = (e) => {
-    setCodeLength(e.target.value);
-  };
+    setCodeLength(e.target.value)
+  }
 
   const handleCopy = (text) => {
-    let requiredString = text.props.children.props.children[1];
-    copy(requiredString.props.children.toString());
-    setCopied(true);
+    let requiredString = text.props.children.props.children[1]
+    copy(requiredString.props.children.toString())
+    setCopied(true)
     setTimeout(() => {
-      setCopied(false);
-    }, 3000);
-  };
+      setCopied(false)
+    }, 3000)
+  }
 
   const setObj = (char) => {
-    setCodeObject({ ...codeObject, [char]: !codeObject[char] });
-  };
+    setCodeObject({ ...codeObject, [char]: !codeObject[char] })
+  }
   const generateCode = () => {
     if (
       Object.values(codeObject).includes(true) &&
@@ -49,23 +49,23 @@ function App() {
           codeObject.upper,
           codeObject.special
         )
-      );
-      setDisplayError(false);
-      setDisplayCode(true);
+      )
+      setDisplayError(false)
+      setDisplayCode(true)
     } else {
-      setDisplayCode(false);
+      setDisplayCode(false)
       if (!Object.values(codeObject).includes(true)) {
-        setDisplayError("ERROR - Please select one of the above options");
+        setDisplayError("ERROR - Please select one of the above options")
       } else if (codeLength > 256) {
-        setDisplayCode(false);
+        setDisplayCode(false)
         setDisplayError(
           "Your passcode cannot include more than 256 characters, excluding the words (if added)"
-        );
+        )
       } else {
-        setDisplayError("Error - please report");
+        setDisplayError("Error - please report")
       }
     }
-  };
+  }
 
   return (
     <div className="App">
@@ -119,7 +119,7 @@ function App() {
       </div>
       {Content()}
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
