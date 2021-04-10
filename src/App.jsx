@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { Button, Checkbox, InputLabel } from "@material-ui/core"
 import codeGenerator from "./scripts/codeGenerator.tsx"
 import Content from "./assets/content/content.tsx"
 import "./App.css"
@@ -77,7 +78,7 @@ function App() {
         <em>
           This is a personal project, <strong>NOT</strong> a high security
           password generator. This is for demonstration purposes
-          <strong>only.</strong>
+          <strong> only.</strong>
         </em>
       </div>
       <div className="decide-length-of-code">
@@ -92,13 +93,16 @@ function App() {
         characters long.
       </div>
       <div className="options-wrapper">
-        I want to include...
+        I want to include these characters...
         <div>
           Numbers
-          <input type="checkbox" onChange={() => setObj("nums")} />
-          Lowercase <input type="checkbox" onChange={() => setObj("lower")} />
-          Uppercase <input type="checkbox" onChange={() => setObj("upper")} />
-          Specials <input type="checkbox" onChange={() => setObj("special")} />
+          <Checkbox onChange={() => setObj("nums")} />
+          Lowercase
+          <Checkbox onChange={() => setObj("lower")} />
+          Uppercase
+          <Checkbox onChange={() => setObj("upper")} />
+          Specials
+          <Checkbox onChange={() => setObj("special")} />
         </div>
       </div>
       <div className="buttons-wrap">
