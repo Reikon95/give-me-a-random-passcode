@@ -63,10 +63,15 @@ function App() {
       } else if (codeLength > 256) {
         setDisplayCode(false)
         setDisplayError(
-          "Your passcode cannot include more than 256 characters, excluding the words (if added)"
+          "Your passcode cannot include more than 256 characters."
+        )
+      } else if (!codeLength) {
+        console.log(codeObject, codeLength)
+        setDisplayError(
+          "Error - please choose the length of your code. Just type it in the box!"
         )
       } else {
-        setDisplayError("Error - please report")
+        setDisplayError("Error - please report to admin")
       }
     }
   }
