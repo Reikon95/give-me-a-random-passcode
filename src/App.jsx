@@ -3,8 +3,10 @@ import codeGenerator from "./scripts/codeGenerator.tsx"
 import Content from "./assets/content/content.tsx"
 import "./App.css"
 import * as copy from "copy-to-clipboard"
+import Facts from "./assets/facts/facts"
 
 function App() {
+  let [count, setCount] = useState(0)
   let [code, setCode] = useState("")
   let [copied, setCopied] = useState(false)
   let [codeLength, setCodeLength] = useState(null)
@@ -52,6 +54,7 @@ function App() {
       )
       setDisplayError(false)
       setDisplayCode(true)
+      setCount(count + 1)
     } else {
       setDisplayCode(false)
       if (!Object.values(codeObject).includes(true)) {
@@ -117,7 +120,8 @@ function App() {
           ? "Hint - click to copy to clipboard"
           : ""}
       </div>
-      {Content()}
+      <Facts numberOfCodes={count} />
+      <Content />
     </div>
   )
 }
