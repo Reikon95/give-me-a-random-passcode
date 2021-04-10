@@ -6,7 +6,6 @@ export default function Facts({ numberOfCodes }) {
       {numberOfCodes > 0
         ? `You have generated ${numberOfCodes} random passcodes`
         : ""}
-      {/* You have generated {numberOfCodes} random passcodes */}
     </div>
   )
 }
