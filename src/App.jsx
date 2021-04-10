@@ -76,12 +76,12 @@ function App() {
         <h1>Generate an Example Secure Passcode</h1>
         <em>
           This is a personal project, <strong>NOT</strong> a high security
-          password generator. This is for demonstration purposes{" "}
+          password generator. This is for demonstration purposes
           <strong>only.</strong>
         </em>
       </div>
       <div className="decide-length-of-code">
-        I want my code to be...{" "}
+        I want my code to be...
         <input
           type="number"
           value={codeLength ? codeLength : ""}
