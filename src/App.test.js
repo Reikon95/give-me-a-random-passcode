@@ -136,5 +136,35 @@ test("lowercase codes can be generated", () => {
   const code = screen.getByTestId("code-result").textContent
   expect(code).toHaveLength(23)
   expect(/[a-z]/.test(code)).toBe(true)
-  expect(/[^a-zA-Z]+/.test(code)).toBe(false)
+  expect(/[^a-z]+/.test(code)).toBe(false)
+})
+
+test("uppercase codes can be generated", () => {
+  render(<App />)
+  const uppercase = screen.getByTestId("uppercase-checkbox")
+  const button = screen.getByTestId("manual-generate-code-button")
+  const innerCheckbox = uppercase.querySelector('input[type="checkbox"]')
+  const lengthInput = screen.getByTestId("length-input")
+  fireEvent.change(lengthInput, { target: { value: "23" } })
+  fireEvent.click(innerCheckbox)
+  fireEvent.click(button)
+  const code = screen.getByTestId("code-result").textContent
+  expect(code).toHaveLength(23)
+  expect(/[A-Z]/.test(code)).toBe(true)
+  expect(/[^A-Z]+/.test(code)).toBe(false)
+})
+
+test("numbers codes can be generated", () => {
+  render(<App />)
+  const numbers = screen.getByTestId("numbers-checkbox")
+  const button = screen.getByTestId("manual-generate-code-button")
+  const innerCheckbox = numbers.querySelector('input[type="checkbox"]')
+  const lengthInput = screen.getByTestId("length-input")
+  fireEvent.change(lengthInput, { target: { value: "23" } })
+  fireEvent.click(innerCheckbox)
+  fireEvent.click(button)
+  const code = screen.getByTestId("code-result").textContent
+  expect(code).toHaveLength(23)
+  expect(/[0-9]/.test(code)).toBe(true)
+  expect(/[^0-9]+/.test(code)).toBe(false)
 })
