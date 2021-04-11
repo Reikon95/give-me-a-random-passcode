@@ -32,12 +32,26 @@ test("code length input is rendered", () => {
   expect(lengthInput).toBeInTheDocument()
 })
 
-test("code length can be modified", () => {
+test("code length can be modified using numbers", () => {
   render(<App />)
   const lengthInput = screen.getByTestId("length-input")
-  console.log(lengthInput.value)
   fireEvent.change(lengthInput, { target: { value: "23" } })
   expect(lengthInput).toBeInTheDocument()
-  console.log(lengthInput.value)
   expect(lengthInput.value).toBe("23")
+})
+
+test("code length cannot be modified using letters", () => {
+  render(<App />)
+  const lengthInput = screen.getByTestId("length-input")
+  fireEvent.change(lengthInput, { target: { value: "abc" } })
+  expect(lengthInput).toBeInTheDocument()
+  expect(lengthInput.value).toBe("")
+})
+
+test("code length cannot be modified using a combination of letters and number", () => {
+  render(<App />)
+  const lengthInput = screen.getByTestId("length-input")
+  fireEvent.change(lengthInput, { target: { value: "abc123" } })
+  expect(lengthInput).toBeInTheDocument()
+  expect(lengthInput.value).toBe("")
 })
