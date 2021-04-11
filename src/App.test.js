@@ -123,3 +123,18 @@ test("special checkbox is clickable", () => {
   fireEvent.click(innerCheckbox)
   expect(innerCheckbox).toHaveProperty("checked", true)
 })
+
+test("lowercase codes can be generated", () => {
+  render(<App />)
+  const lowercase = screen.getByTestId("lowercase-checkbox")
+  const button = screen.getByTestId("manual-generate-code-button")
+  const innerCheckbox = lowercase.querySelector('input[type="checkbox"]')
+  const lengthInput = screen.getByTestId("length-input")
+  fireEvent.change(lengthInput, { target: { value: "23" } })
+  fireEvent.click(innerCheckbox)
+  fireEvent.click(button)
+  const code = screen.getByTestId("code-result").textContent
+  expect(code).toHaveLength(23)
+  expect(/[a-z]/.test(code)).toBe(true)
+  expect(/[^a-zA-Z]+/.test(code)).toBe(false)
+})

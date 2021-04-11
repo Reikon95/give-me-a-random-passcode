@@ -142,6 +142,7 @@ function App() {
         <button
           onClick={() => generateCode()}
           className="app-button app-button-generate"
+          data-testid="manual-generate-code-button"
         >
           Get New Code
         </button>
@@ -163,7 +164,13 @@ function App() {
       </div>
       <div className="error-message">{displayError}</div>
       <div className="result-wrapper" onClick={() => handleCopy(code)}>
-        {displayCode ? <div className="code-object">{code}</div> : ""}
+        {displayCode ? (
+          <div className="code-object" data-testid="generated-code">
+            {code}
+          </div>
+        ) : (
+          ""
+        )}
       </div>
       <div>
         {copied
