@@ -2,24 +2,35 @@ import React, { useState } from "react"
 import { Button, Checkbox, InputLabel } from "@material-ui/core"
 import codeGenerator from "./scripts/codeGenerator.tsx"
 import Content from "./assets/content/content.tsx"
+import useInterval from "./scripts/useInterval"
 import "./App.css"
 import * as copy from "copy-to-clipboard"
 import Facts from "./assets/facts/facts"
 
 function App() {
-  let [count, setCount] = useState(0)
-  let [code, setCode] = useState("")
-  let [copied, setCopied] = useState(false)
-  let [codeLength, setCodeLength] = useState(null)
-  let [displayCode, setDisplayCode] = useState(false)
-  let [displayError, setDisplayError] = useState("")
-  let [codeObject, setCodeObject] = useState({
+  const [generatingNewCodes, setGeneratingNewCodes] = useState(false)
+  const [count, setCount] = useState(0)
+  const [code, setCode] = useState("")
+  const [copied, setCopied] = useState(false)
+  const [codeLength, setCodeLength] = useState(null)
+  const [displayCode, setDisplayCode] = useState(false)
+  const [displayError, setDisplayError] = useState("")
+  const [codeObject, setCodeObject] = useState({
     nums: false,
     lower: false,
     upper: false,
     special: false,
     words: false,
   })
+
+  const startGenerateCodeLoop = () => {
+    generateCode()
+    setGeneratingNewCodes(true)
+  }
+
+  const stopGenerateCodeLoop = () => {
+    setGeneratingNewCodes(false)
+  }
 
   const handleIntegerChange = (e) => {
     setCodeLength(e.target.value)
@@ -66,7 +77,6 @@ function App() {
           "Your passcode cannot include more than 256 characters."
         )
       } else if (!codeLength) {
-        console.log(codeObject, codeLength)
         setDisplayError(
           "Error - please choose the length of your code. Just type it in the box!"
         )
@@ -76,15 +86,20 @@ function App() {
     }
   }
 
+  useInterval(
+    () => {
+      if (generatingNewCodes) {
+        generateCode()
+      }
+    },
+    generatingNewCodes ? 10000 : null
+  )
+
   return (
     <div className="App">
       <div className="title">
         <h1>Generate an Example Secure Passcode</h1>
-        <em>
-          This is a personal project, <strong>NOT</strong> a high security
-          password generator. This is for demonstration purposes
-          <strong> only.</strong>
-        </em>
+        Don't get pwned.
       </div>
       <div className="decide-length-of-code">
         I want my code to be...
@@ -115,8 +130,23 @@ function App() {
           onClick={() => generateCode()}
           className="app-button app-button-generate"
         >
-          GET NEW CODE
+          Get New Code
         </button>
+        {generatingNewCodes ? (
+          <button
+            onClick={() => stopGenerateCodeLoop()}
+            className="app-button app-button-generate"
+          >
+            Stop Generating Codes{" "}
+          </button>
+        ) : (
+          <button
+            onClick={() => startGenerateCodeLoop()}
+            className="app-button app-button-generate"
+          >
+            Generate Me Codes!{" "}
+          </button>
+        )}
       </div>
       <div className="error-message">{displayError}</div>
       <div className="result-wrapper" onClick={() => handleCopy(code)}>
