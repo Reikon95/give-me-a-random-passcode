@@ -117,13 +117,25 @@ function App() {
         I want to include these characters...
         <div>
           Numbers
-          <Checkbox onChange={() => setObj("nums")} />
+          <Checkbox
+            onChange={() => setObj("nums")}
+            data-testid="numbers-checkbox"
+          />
           Lowercase
-          <Checkbox onChange={() => setObj("lower")} />
+          <Checkbox
+            onChange={() => setObj("lower")}
+            data-testid="lowercase-checkbox"
+          />
           Uppercase
-          <Checkbox onChange={() => setObj("upper")} />
+          <Checkbox
+            onChange={() => setObj("upper")}
+            data-testid="uppercase-checkbox"
+          />
           Specials
-          <Checkbox onChange={() => setObj("special")} />
+          <Checkbox
+            onChange={() => setObj("special")}
+            data-testid="special-checkbox"
+          />
         </div>
       </div>
       <div className="buttons-wrap">
