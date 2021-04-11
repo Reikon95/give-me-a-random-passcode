@@ -109,6 +109,7 @@ function App() {
           onChange={handleIntegerChange}
           className="code-length-input"
           min="0"
+          data-testid="length-input"
         />
         characters long.
       </div>
