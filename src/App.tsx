@@ -1,10 +1,10 @@
 import React, { useState } from "react"
 import { Checkbox } from "@material-ui/core"
-import codeGenerator from "./scripts/codeGenerator.tsx"
-import Content from "./assets/content/content.tsx"
+import codeGenerator from "./scripts/codeGenerator"
+import Content from "./assets/content/content"
 import useInterval from "./scripts/useInterval"
 import "./App.css"
-import * as copy from "copy-to-clipboard"
+import copy from "copy-to-clipboard"
 import Facts from "./assets/facts/facts"
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
   const [count, setCount] = useState(0)
   const [code, setCode] = useState("")
   const [copied, setCopied] = useState(false)
-  const [codeLength, setCodeLength] = useState(null)
+  const [codeLength, setCodeLength] = useState(0)
   const [displayCode, setDisplayCode] = useState(false)
   const [displayError, setDisplayError] = useState("")
   const [codeObject, setCodeObject] = useState({
@@ -55,6 +55,7 @@ function App() {
       codeLength < 257
     ) {
       setCode(
+        // @ts-ignore
         codeGenerator(
           codeLength,
           codeObject.nums,
@@ -64,6 +65,7 @@ function App() {
           codeObject.special
         )
       )
+      // @ts-ignore
       setDisplayError(false)
       setDisplayCode(true)
       setCount(count + 1)
