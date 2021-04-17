@@ -76,6 +76,9 @@ function App() {
         setDisplayError(
           "Your passcode cannot include more than 256 characters."
         )
+      } else if (codeLength < 1) {
+        setDisplayCode(false)
+        setDisplayError("Your passcode must have at least one character")
       } else if (!codeLength) {
         setDisplayError(
           "Error - please choose the length of your code. Just type it in the box!"

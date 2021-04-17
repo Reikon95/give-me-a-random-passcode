@@ -30,10 +30,6 @@ ul {
   margin: auto 1vw;
 }
 
-.error-message {
-  font-style: italic;
-}
-
 .app-button {
   margin: 0 5px;
   color: white;
