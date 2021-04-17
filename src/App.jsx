@@ -108,7 +108,7 @@ function App() {
           value={codeLength ? codeLength : ""}
           onChange={handleIntegerChange}
           className="code-length-input"
-          min="0"
+          min={1}
           data-testid="length-input"
         />
         characters long.

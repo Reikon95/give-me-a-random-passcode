@@ -26,8 +26,7 @@ ul {
   margin-top: 3vh;
 }
 .code-length-input {
-  min-width: 24px;
-  width: 3vw;
+  width: 40px;
   margin: auto 1vw;
 }
 
