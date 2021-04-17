@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Button, Checkbox, InputLabel } from "@material-ui/core"
+import { Checkbox } from "@material-ui/core"
 import codeGenerator from "./scripts/codeGenerator.tsx"
 import Content from "./assets/content/content.tsx"
 import useInterval from "./scripts/useInterval"
