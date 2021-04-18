@@ -23,20 +23,20 @@ function App() {
     words: false,
   })
 
-  const startGenerateCodeLoop = () => {
+  const startGenerateCodeLoop = (): void => {
     generateCode()
     setGeneratingNewCodes(true)
   }
 
-  const stopGenerateCodeLoop = () => {
+  const stopGenerateCodeLoop = (): void => {
     setGeneratingNewCodes(false)
   }
 
-  const handleIntegerChange = (e) => {
+  const handleIntegerChange = (e): void => {
     setCodeLength(e.target.value)
   }
 
-  const handleCopy = (text) => {
+  const handleCopy = (text): void => {
     let requiredString = text.props.children.props.children[1]
     copy(requiredString.props.children.toString())
     setCopied(true)
@@ -45,10 +45,10 @@ function App() {
     }, 3000)
   }
 
-  const setObj = (char) => {
+  const setObj = (char: string): void => {
     setCodeObject({ ...codeObject, [char]: !codeObject[char] })
   }
-  const generateCode = () => {
+  const generateCode = (): void => {
     if (
       Object.values(codeObject).includes(true) &&
       codeLength > 0 &&
@@ -92,7 +92,7 @@ function App() {
   }
 
   useInterval(
-    () => {
+    (): void => {
       if (generatingNewCodes) {
         generateCode()
       }

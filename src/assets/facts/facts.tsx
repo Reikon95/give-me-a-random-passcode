@@ -1,6 +1,8 @@
 import React from "react"
 import "./facts.css"
-export default function Facts({ numberOfCodes }) {
+import PropTypes from "prop-types"
+
+function Facts({ numberOfCodes }) {
   return (
     <div className="content">
       {numberOfCodes > 0
@@ -9,3 +11,9 @@ export default function Facts({ numberOfCodes }) {
     </div>
   )
 }
+
+Facts.propTypes = {
+  numberOfCodes: PropTypes.number,
+}
+
+export default Facts
