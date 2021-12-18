@@ -1,53 +1,53 @@
-import React, { useState } from "react"
-import { Checkbox } from "@material-ui/core"
-import codeGenerator from "./scripts/codeGenerator"
-import Content from "./assets/content/content"
-import useInterval from "./scripts/useInterval"
-import "./App.css"
-import copy from "copy-to-clipboard"
-import Facts from "./assets/facts/facts"
+import React, { useState } from "react";
+import { Checkbox } from "@material-ui/core";
+import codeGenerator from "./scripts/codeGenerator";
+import Content from "./assets/content/content";
+import useInterval from "./scripts/useInterval";
+import "./App.css";
+import copy from "copy-to-clipboard";
+import Facts from "./assets/facts/facts";
 
 function App() {
-  const [generatingNewCodes, setGeneratingNewCodes] = useState(false)
-  const [count, setCount] = useState(0)
-  const [code, setCode] = useState("")
-  const [copied, setCopied] = useState(false)
-  const [codeLength, setCodeLength] = useState(0)
-  const [displayCode, setDisplayCode] = useState(false)
-  const [displayError, setDisplayError] = useState("")
+  const [generatingNewCodes, setGeneratingNewCodes] = useState(false);
+  const [count, setCount] = useState(0);
+  const [code, setCode] = useState("");
+  const [copied, setCopied] = useState(false);
+  const [codeLength, setCodeLength] = useState(0);
+  const [displayCode, setDisplayCode] = useState(false);
+  const [displayError, setDisplayError] = useState("");
   const [codeObject, setCodeObject] = useState({
     nums: false,
     lower: false,
     upper: false,
     special: false,
     words: false,
-  })
+  });
 
   const startGenerateCodeLoop = (): void => {
-    generateCode()
-    setGeneratingNewCodes(true)
-  }
+    generateCode();
+    setGeneratingNewCodes(true);
+  };
 
   const stopGenerateCodeLoop = (): void => {
-    setGeneratingNewCodes(false)
-  }
+    setGeneratingNewCodes(false);
+  };
 
   const handleIntegerChange = (e): void => {
-    setCodeLength(e.target.value)
-  }
+    setCodeLength(e.target.value);
+  };
 
   const handleCopy = (text): void => {
-    let requiredString = text.props.children.props.children[1]
-    copy(requiredString.props.children.toString())
-    setCopied(true)
+    let requiredString = text.props.children.props.children[1];
+    copy(requiredString.props.children.toString());
+    setCopied(true);
     setTimeout(() => {
-      setCopied(false)
-    }, 3000)
-  }
+      setCopied(false);
+    }, 3000);
+  };
 
   const setObj = (char: string): void => {
-    setCodeObject({ ...codeObject, [char]: !codeObject[char] })
-  }
+    setCodeObject({ ...codeObject, [char]: !codeObject[char] });
+  };
   const generateCode = (): void => {
     if (
       Object.values(codeObject).includes(true) &&
@@ -64,41 +64,40 @@ function App() {
           codeObject.upper,
           codeObject.special
         )
-      )
-      // @ts-ignore
-      setDisplayError(false)
-      setDisplayCode(true)
-      setCount(count + 1)
+      );
+      setDisplayError("");
+      setDisplayCode(true);
+      setCount(count + 1);
     } else {
-      setDisplayCode(false)
+      setDisplayCode(false);
       if (!Object.values(codeObject).includes(true)) {
-        setDisplayError("ERROR - Please select one of the above options")
+        setDisplayError("ERROR - Please select one of the above options");
       } else if (codeLength > 256) {
-        setDisplayCode(false)
+        setDisplayCode(false);
         setDisplayError(
           "Your passcode cannot include more than 256 characters."
-        )
+        );
       } else if (codeLength < 1) {
-        setDisplayCode(false)
-        setDisplayError("Your passcode must have at least one character")
+        setDisplayCode(false);
+        setDisplayError("Your passcode must have at least one character");
       } else if (!codeLength) {
         setDisplayError(
           "Error - please choose the length of your code. Just type it in the box!"
-        )
+        );
       } else {
-        setDisplayError("Error - please report to admin")
+        setDisplayError("Error - please report to admin");
       }
     }
-  }
+  };
 
   useInterval(
     (): void => {
       if (generatingNewCodes) {
-        generateCode()
+        generateCode();
       }
     },
     generatingNewCodes ? 10000 : null
-  )
+  );
 
   return (
     <div className="App">
@@ -156,25 +155,23 @@ function App() {
             onClick={() => stopGenerateCodeLoop()}
             className="app-button app-button-generate"
           >
-            Stop Generating Codes{" "}
+            Stop Generating Codes
           </button>
         ) : (
           <button
             onClick={() => startGenerateCodeLoop()}
             className="app-button app-button-generate"
           >
-            Generate Me Codes!{" "}
+            Generate Me Codes!
           </button>
         )}
       </div>
       <div className="error-message">{displayError}</div>
       <div className="result-wrapper" onClick={() => handleCopy(code)}>
-        {displayCode ? (
+        {displayCode && (
           <div className="code-object" data-testid="generated-code">
             {code}
           </div>
-        ) : (
-          ""
         )}
       </div>
       <div>
@@ -187,7 +184,7 @@ function App() {
       <Facts numberOfCodes={count} />
       <Content />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
