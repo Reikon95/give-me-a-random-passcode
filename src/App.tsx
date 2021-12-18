@@ -20,7 +20,6 @@ function App() {
     lower: false,
     upper: false,
     special: false,
-    words: false,
   });
 
   const startGenerateCodeLoop = (): void => {
@@ -59,7 +58,6 @@ function App() {
         codeGenerator(
           codeLength,
           codeObject.nums,
-          codeObject.words,
           codeObject.lower,
           codeObject.upper,
           codeObject.special
@@ -145,22 +143,19 @@ function App() {
       <div>
         <button
           onClick={() => generateCode()}
-          className="app-button app-button-generate"
+          className="app-button"
           data-testid="manual-generate-code-button"
         >
           Get New Code
         </button>
         {generatingNewCodes ? (
-          <button
-            onClick={() => stopGenerateCodeLoop()}
-            className="app-button app-button-generate"
-          >
+          <button onClick={() => stopGenerateCodeLoop()} className="app-button">
             Stop Generating Codes
           </button>
         ) : (
           <button
             onClick={() => startGenerateCodeLoop()}
-            className="app-button app-button-generate"
+            className="app-button"
           >
             Generate Me Codes!
           </button>

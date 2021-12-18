@@ -21,15 +21,15 @@ export default function Content() {
           </a>
         </div>
         <div>
-          Programmed by{" "}
+          Programmed by
           <a
             href="https://www.linkedin.com/in/cameron-blackwood-2b758883/"
             rel="noopener noreferrer"
             target="_blank"
           >
             Cameron Blackwood
-          </a>{" "}
-          using Typescript/React (with hooks).
+          </a>
+          using Typescript, NodeJS and React.
         </div>
         <a
           href="https://github.com/Reikon95/give-me-a-random"
