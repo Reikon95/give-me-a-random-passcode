@@ -6,6 +6,7 @@ import useInterval from "./scripts/useInterval";
 import "./App.css";
 import copy from "copy-to-clipboard";
 import Facts from "./components/facts/facts";
+import CopiedIndicator from "./components/copied-indicator/copiedIndicator";
 
 function App() {
   const [generatingNewCodes, setGeneratingNewCodes] = useState(false);
@@ -169,13 +170,7 @@ function App() {
           </div>
         )}
       </div>
-      <div>
-        {copied
-          ? " 🙌 Copied to clipboard!  🙌"
-          : displayCode
-          ? "Hint - click to copy to clipboard"
-          : ""}
-      </div>
+      <CopiedIndicator copied={copied} displayCode={displayCode} />
       <Facts numberOfCodes={count} />
       <Content />
     </div>

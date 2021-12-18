@@ -21,14 +21,14 @@ export default function Content() {
           </a>
         </div>
         <div>
-          Programmed by
+          Programmed by{" "}
           <a
             href="https://www.linkedin.com/in/cameron-blackwood-2b758883/"
             rel="noopener noreferrer"
             target="_blank"
           >
             Cameron Blackwood
-          </a>
+          </a>{" "}
           using Typescript, NodeJS and React.
         </div>
         <a
