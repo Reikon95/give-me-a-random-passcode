@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Checkbox } from "@material-ui/core";
 import codeGenerator from "./scripts/codeGenerator";
-import Content from "./assets/content/content";
+import Content from "./components/content/content";
 import useInterval from "./scripts/useInterval";
 import "./App.css";
 import copy from "copy-to-clipboard";
-import Facts from "./assets/facts/facts";
+import Facts from "./components/facts/facts";
 
 function App() {
   const [generatingNewCodes, setGeneratingNewCodes] = useState(false);
@@ -101,7 +101,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className="title">
+      <div className="app-title">
         <h1>Generate an Example Secure Passcode</h1>
         Don't get pwned.
       </div>
@@ -142,7 +142,7 @@ function App() {
           />
         </div>
       </div>
-      <div className="buttons-wrap">
+      <div>
         <button
           onClick={() => generateCode()}
           className="app-button app-button-generate"

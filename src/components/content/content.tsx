@@ -1,12 +1,11 @@
-import React from "react"
-import "./content.css"
+import React from "react";
+import "./content.css";
 export default function Content() {
   return (
     <div className="content">
       <div>
-        <h2>Additional Info </h2>
+        <h2>Additional Info</h2>
         <div>
-          {" "}
           This is simply an advisory tool and I'm not responsible for your
           password useage.
         </div>
@@ -30,7 +29,7 @@ export default function Content() {
           >
             Cameron Blackwood
           </a>{" "}
-          using Javascript/React (with hooks).
+          using Typescript/React (with hooks).
         </div>
         <a
           href="https://github.com/Reikon95/give-me-a-random"
@@ -41,5 +40,5 @@ export default function Content() {
         </a>
       </div>
     </div>
-  )
+  );
 }

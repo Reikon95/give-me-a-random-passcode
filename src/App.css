@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
 
-.title {
+.app-title {
   padding: 3vh 0vh;
 }
 
@@ -36,16 +36,8 @@ ul {
   min-height: 50px;
   min-width: 40px;
   border-radius: 8%;
-  box-shadow: 0;
   border: none;
-}
-
-.app-button-generate {
   background-color: #4caf50;
-}
-
-.app-button-reset {
-  background-color: #f44336;
 }
 
 .error-message {
